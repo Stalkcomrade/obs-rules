@@ -1,0 +1,9 @@
+{ "name" : "foo", 
+    "config" : { 
+           "port" : "3000" 
+    }, 
+    "scripts" : { 
+        "start" : "nodemon ./bin/www",
+        "clean_db" : "sh ./init_db.sh"
+    } 
+}
