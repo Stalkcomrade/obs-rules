@@ -18,19 +18,27 @@ router.get('/', (req, res, next) => {
     __dirname, '..', '..', 'client', 'views', 'index.html'));
 });
 
-//get all sessions
+// get all sessions
 router.get('/all', (req, res, next) => {
   const results = [];
 
-    con.query('SELECT * FROM session ORDER BY id DESC;', (err,rows) => {
-    if(err) throw err;
+  try {
 
-    rows.forEach( (row) => {
-    results.push(row);
-    //console.log(`${row.name} started at ${row.time_start}`);
+    con.query('SELECT * FROM session ORDER BY id DESC;', (err,rows) => {
+
+      // if(err) throw err;
+  
+      rows.forEach( (row) => {
+      results.push(row);
+      //console.log(`${row.name} started at ${row.time_start}`);
+      });
+      return res.json(results);
     });
-    return res.json(results);
-  });
+    
+  } catch (error) {
+    console.error("No session table or no session available: ", error)
+  }
+
 });
 
 //create session
@@ -55,6 +63,7 @@ router.post('/create', (req, res, next) => {
   results = '{"id":"'+res1.insertId+'"}'
 
   return res.json(JSON.parse(results));
+  
   });
 
 
