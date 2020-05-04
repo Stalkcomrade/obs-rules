@@ -103,6 +103,40 @@ CREATE TABLE IF NOT EXISTS session (
 );
 
 
+CREATE TABLE IF NOT EXISTS action_session (
+    id INT,
+    id_action INT,
+    id_session INT,
+    action_desc VARCHAR(255),
+    id_object INT,
+    time_action DATE
+);
+
+
+CREATE TABLE IF NOT EXISTS action_session_object (
+    id INT,
+    action_desc VARCHAR(255),
+    notes VARCHAR(255),
+    id_object INT,
+    time_action DATE
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS datatype_session (
+    id_session INT,
+    id_datatype INT
+);
+
+CREATE TABLE IF NOT EXISTS object_session (
+    id INT,
+    id_session INT,
+    id_object INT
+);
+
+
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -1,9 +1,11 @@
-# TODO: SQL DB init
+# SOLVED: SQL DB init
 
 ## FIXME: autoincrement id
 
+```sh
 mysql -u root
 # CREATE DATABASE group_analytics;
+```
 
 ```sql
 DROP DATABASE group_analytics;
@@ -62,30 +64,25 @@ CREATE TABLE IF NOT EXISTS session (
 ```
 
 
-## TODO: create two main databases
-
-action_session.id
-action_session.id_action
-action_session.action_desc
-
-action_session.id_object
-action_session.time_action
-
-action_session.id_object, action_session.time_action
+## SOLVED: create two main databases
 
 ```sql
 CREATE TABLE IF NOT EXISTS action_session (
-    name VARCHAR(255) NOT NULL,
-    room INT NOT NULL,
-    session_date DATE NOT NULL,
-    time_start DATE NOT NULL
+    id INT,
+    id_action INT,
+    action_desc VARCHAR(255),
+    id_object INT,
+    time_action DATE
 );
 ```
 
-action_session_object
-
 ```sql
 CREATE TABLE IF NOT EXISTS action_session_object (
+    id INT,
+    action_desc VARCHAR(255),
+    notes VARCHAR(255),
+    id_object INT,
+    time_action DATE
 );
 ```
 
