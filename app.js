@@ -14,6 +14,14 @@ const app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
+
+// caling python
+var callPY = require('./callPyFromNode');
+var dt = callPY.runPy()
+dt.then(dt => {
+  callPY.executeInVenv(dt)
+})
+
 //var fs = require('fs');
 //var textlogger = fs.createWriteStream('main-log.txt', {
 //flags: 'a' // 'a' means appending (old data will be preserved)
